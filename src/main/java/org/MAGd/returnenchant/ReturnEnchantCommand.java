@@ -24,7 +24,7 @@ public class ReturnEnchantCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "此指令只能由玩家執行！");
+            sender.sendMessage(formatMessage(plugin.getConfig().getString("messages.player-only", "&c此指令只能由玩家執行！")));
             return true;
         }
 
@@ -32,20 +32,20 @@ public class ReturnEnchantCommand implements CommandExecutor {
         
         // 檢查權限
         if (!player.hasPermission("returnenchant.use")) {
-            player.sendMessage(ChatColor.RED + "你沒有權限使用此指令！");
+            player.sendMessage(formatMessage(plugin.getConfig().getString("messages.no-permission", "&c你沒有權限使用此指令！")));
             return true;
         }
         
         ItemStack item = player.getInventory().getItemInMainHand();
 
         if (item.getType() == Material.AIR) {
-            player.sendMessage(ChatColor.RED + "請手持要移除附魔的物品！");
+            player.sendMessage(formatMessage(plugin.getConfig().getString("messages.no-item", "&c請手持要移除附魔的物品！")));
             return true;
         }
 
         ItemMeta meta = item.getItemMeta();
         if (meta == null) {
-            player.sendMessage(ChatColor.RED + "此物品沒有任何附魔！");
+            player.sendMessage(formatMessage(plugin.getConfig().getString("messages.no-enchant", "&c此物品沒有任何附魔！")));
             return true;
         }
 
@@ -55,7 +55,7 @@ public class ReturnEnchantCommand implements CommandExecutor {
         
         // 檢查是否有任何附魔
         if (vanillaEnchants.isEmpty()) {
-            player.sendMessage(ChatColor.RED + "此物品沒有任何附魔！");
+            player.sendMessage(formatMessage(plugin.getConfig().getString("messages.no-enchant", "&c此物品沒有任何附魔！")));
             return true;
         }
         
@@ -79,7 +79,10 @@ public class ReturnEnchantCommand implements CommandExecutor {
         item.setItemMeta(meta);
         
         // 顯示結果訊息
-        player.sendMessage(ChatColor.GREEN + "已成功移除 " + totalEnchants + " 個附魔並轉換為附魔書！");
+        String successMessage = plugin.getConfig().getString("messages.success", "&a已成功移除 %count% 個附魔並轉換為附魔書！");
+        successMessage = successMessage.replace("%count%", String.valueOf(totalEnchants));
+        player.sendMessage(formatMessage(successMessage));
+        
         return true;
     }
     
@@ -87,9 +90,13 @@ public class ReturnEnchantCommand implements CommandExecutor {
         // 如果玩家背包滿了，物品會掉在地上
         if (player.getInventory().firstEmpty() == -1) {
             player.getWorld().dropItemNaturally(player.getLocation(), item);
-            player.sendMessage(ChatColor.YELLOW + "背包已滿，附魔書已掉落在地上！");
+            player.sendMessage(formatMessage(plugin.getConfig().getString("messages.inventory-full", "&e背包已滿，附魔書已掉落在地上！")));
         } else {
             player.getInventory().addItem(item);
         }
+    }
+    
+    private String formatMessage(String message) {
+        return ChatColor.translateAlternateColorCodes('&', message);
     }
 } 

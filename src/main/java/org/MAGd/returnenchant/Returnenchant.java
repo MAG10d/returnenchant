@@ -5,6 +5,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Returnenchant extends JavaPlugin {
     @Override
     public void onEnable() {
+        // 保存默認配置
+        saveDefaultConfig();
+        
         // 註冊指令執行器
         this.getCommand("returnenchant").setExecutor(new ReturnEnchantCommand(this));
         getLogger().info("ReturnEnchant plugin has been enabled!");

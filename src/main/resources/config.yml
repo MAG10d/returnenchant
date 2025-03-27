@@ -1,0 +1,10 @@
+# ReturnEnchant 插件配置文件
+
+# 插件消息設定
+messages:
+  no-permission: "&c你沒有權限使用此指令！"
+  player-only: "&c此指令只能由玩家執行！"
+  no-item: "&c請手持要移除附魔的物品！"
+  no-enchant: "&c此物品沒有任何附魔！"
+  success: "&a已成功移除 %count% 個附魔並轉換為附魔書！"
+  inventory-full: "&e背包已滿，附魔書已掉落在地上！" 
