@@ -7,4 +7,8 @@ messages:
   no-item: "&c請手持要移除附魔的物品！"
   no-enchant: "&c此物品沒有任何附魔！"
   success: "&a已成功移除 %count% 個附魔並轉換為附魔書！"
-  inventory-full: "&e背包已滿，附魔書已掉落在地上！" 
+  inventory-full: "&e背包已滿，附魔書已掉落在地上！"
+
+fee:
+  enabled: true
+  price: 100.0

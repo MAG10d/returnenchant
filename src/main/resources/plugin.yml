@@ -9,7 +9,14 @@ commands:
     description: Remove enchantments from the item in your hand and return them as enchanted books
     usage: /<command>
     permission: returnenchant.use
+  armor:
+    description: Remove enchantments from all armor the player is wearing and return them as enchanted books
+    usage: /<command> armor
+    permission: returnenchant.armor
 permissions:
   returnenchant.use:
     description: Allows players to use the returnenchant command
+    default: false
+  returnenchant.armor:
+    description: Allows players to use the armor subcommand
     default: false
