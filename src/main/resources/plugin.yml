@@ -2,14 +2,21 @@ name: ReturnEnchant
 version: '${version}'
 main: org.MAGd.returnenchant.Returnenchant
 api-version: '1.21'
-description: Remove enchantments from items and return them as enchanted books
+description: Remove enchantments from items and return them as enchanted books with VIP pricing system
+depend: [Vault]
 softdepend: [ExcellentEnchants]
 commands:
   returnenchant:
     description: Remove enchantments from the item in your hand and return them as enchanted books
-    usage: /<command>
+    usage: /<command> [reload|armor]
     permission: returnenchant.use
 permissions:
   returnenchant.use:
     description: Allows players to use the returnenchant command
-    default: false
+    default: true
+  returnenchant.reload:
+    description: Allows players to reload the plugin configuration
+    default: op
+  returnenchant.armor.use:
+    description: Allows players to use the armor enchantment removal feature
+    default: true

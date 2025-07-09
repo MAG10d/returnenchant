@@ -6,5 +6,60 @@ messages:
   player-only: "&c此指令只能由玩家執行！"
   no-item: "&c請手持要移除附魔的物品！"
   no-enchant: "&c此物品沒有任何附魔！"
-  success: "&a已成功移除 %count% 個附魔並轉換為附魔書！"
-  inventory-full: "&e背包已滿，附魔書已掉落在地上！" 
+  success: "&a已成功移除 %count% 個附魔並轉換為附魔書！花費了 $%cost%"
+  inventory-full: "&e背包已滿，附魔書已掉落在地上！"
+  insufficient-money: "&c你的錢不夠！需要 $%cost%，但你只有 $%balance%"
+  economy-error: "&c經濟系統出現錯誤，請聯繫管理員！"
+  reload-success: "&a插件配置已重新載入！"
+  reload-no-permission: "&c你沒有權限重新載入配置！"
+  # 護甲系統相關消息
+  armor-no-permission: "&c你沒有權限使用護甲附魔移除功能！"
+  armor-no-enchanted-armor: "&c你身上沒有任何附魔的護甲！"
+  armor-success: "&a已成功移除身上護甲的 %count% 個附魔並轉換為附魔書！花費了 $%cost%"
+  armor-insufficient-money: "&c你的錢不夠移除護甲附魔！需要 $%cost%，但你只有 $%balance%"
+
+# VIP 系統設定
+vip-system:
+  enabled: true
+  
+  # VIP 層級設定 - 可以隨意添加更多層級
+  tiers:
+    # 最高等級 - 優先級最高
+    vip_plus:
+      permission: "returnenchant.vip.plus"
+      display_name: "&b&lVIP+"
+      cost: 30.0
+    
+    vip:
+      permission: "returnenchant.vip"
+      display_name: "&6VIP"
+      cost: 50.0
+    
+    # 預設層級 - 優先級最低
+    default:
+      permission: "returnenchant.use"
+      display_name: "&7普通玩家"
+      cost: 100.0
+
+# 護甲附魔移除系統設定
+armor-system:
+  enabled: true
+  
+  # 護甲附魔移除 VIP 層級設定
+  tiers:
+    # 最高等級 - 優先級最高
+    vip_plus:
+      permission: "returnenchant.armor.vip.plus"
+      display_name: "&b&lVIP+"
+      cost: 80.0
+    
+    vip:
+      permission: "returnenchant.armor.vip"
+      display_name: "&6VIP"
+      cost: 120.0
+    
+    # 預設層級 - 優先級最低
+    default:
+      permission: "returnenchant.armor.use"
+      display_name: "&7普通玩家"
+      cost: 200.0
